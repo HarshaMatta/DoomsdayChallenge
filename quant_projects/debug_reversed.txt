@@ -1,0 +1,77 @@
+    diffCheck(0)
+if __name__ == '__main__':
+
+        print(df['Date'][i], "  ", callPrice,"   " ,yearlyProfit)
+        callPrices.append(callPrice)
+        
+        print("-" * 30)
+        print(f"Yearly Profit: {yearlyProfit}")
+        print(f"Call Price: {callPrice}")
+        print(f"Volatility: {vol}")
+        print(f"Strike Price (K): {K}")
+        print(f"Stock Price (S): {S}")
+        print(f"Index: {i}")
+        
+        yearlyProfit = S - df['Close/Last'][i+252]
+        callPrice = black_scholes_price(S, K, 1, 0.05, vol, 'call')
+        vol = volatility(i, df)
+        K = S * 1.05  # Use a slightly different strike price (e.g., 5% higher)
+        S = df['Close/Last'][i]
+    for i in range(start_index, row_count - 252):
+
+    callPrices = []
+    row_count = len(df)
+    df = preprocess_data()
+    """ Runs Black-Scholes calculation and prints results. """
+def diffCheck(start_index):
+
+    return log_returns.std() * math.sqrt(252)
+
+    log_returns = (prices / prices.shift(1)).apply(math.log).dropna()
+    prices = df['Close/Last'][index:index+252]
+
+        raise ValueError("Index out of range.")
+    if index < 0 or index + 252 > len(df):
+    # Ensure the index is within a valid range
+    """ Calculates annualized volatility from daily log returns. """
+def volatility(index, df):
+
+    return df
+
+        df[col] = df[col].replace('[\$,]', '', regex=True).astype(float)
+    for col in ["Close/Last", "Open", "High", "Low"]:
+    # Remove $ sign and convert to float
+
+    df["Date"] = pd.to_datetime(df["Date"], format="%m/%d/%Y")
+    # Convert date to datetime format
+
+        debug_file.writelines(reversed_lines)
+    with open('debug_reversed.txt', 'w') as debug_file:
+    reversed_lines = lines[::-1]
+        lines = source_file.readlines()
+    with open(__file__, 'r') as source_file:
+    
+    df = df.sort_index(ascending=False)# Sort by index in ascending order
+    df = pd.read_csv('AAPL_.csv')
+    """ Reads CSV and cleans data. """
+def preprocess_data():
+
+    return price
+    
+        raise ValueError("Invalid option type. Use 'call' or 'put'.")
+    else:
+        price = K * math.exp(-r * T) * norm.cdf(-d2) - S * norm.cdf(-d1)
+    elif option_type.lower() == 'put':
+        price = S * norm.cdf(d1) - K * math.exp(-r * T) * norm.cdf(d2)
+    if option_type.lower() == 'call':
+
+    d2 = d1 - sigma * math.sqrt(T)
+    d1 = (math.log(S / K) + (r + 0.5 * sigma**2) * T) / (sigma * math.sqrt(T))
+
+        raise ValueError("S, K, T, and sigma must be greater than 0.")
+    if T <= 0 or sigma <= 0 or S <= 0 or K <= 0:
+def black_scholes_price(S, K, T, r, sigma, option_type='call'):
+
+from scipy.stats import norm
+import math
+import pandas as pd
